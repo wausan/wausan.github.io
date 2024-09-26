@@ -84,3 +84,8 @@ a {
     text-decoration: underline;
 }
 
+
+img {
+    margin-right: auto;
+    border-radius: 20%;
+}
