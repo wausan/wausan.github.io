@@ -1,3 +1,4 @@
+/* General styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -5,7 +6,7 @@ body {
     background-image: url(mountain.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: 100% 100%;
+    background-size: cover;
     background-color: #c300ff;
     color: #d013ff;
 }
@@ -15,18 +16,21 @@ header {
     color: #000000;
     padding: 1em 0;
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 2.5em;
-    color: #000000;
+.toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-header h2 {
-    margin: 0;
-    font-size: 2.5em;
-    color: #ffffff;
+input[type="checkbox"] {
+    margin-left: 10px;
+    transform: scale(1.5);
 }
 
 section {
@@ -37,12 +41,6 @@ section {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 1em;
-}
-
-section id {
-    margin: 0;
-    font-size: 2.5em;
-    color: #ffffff;
 }
 
 p {
@@ -58,34 +56,81 @@ h2 {
     color: #000000;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-li {
-    margin: 0.5em 0;
-}
-
 a {
     color: #000000;
     text-decoration: none;
 }
 
-.Talents a:hover {
-    text-decoration: underline;
+img {
+    border-radius: 20%;
 }
 
-.Talents a {
+/* Dark Mode Styles */
+.dark-mode {
+    background-color: #121212;
     color: #ffffff;
 }
 
-.Talents a:hover {
-    text-decoration: underline;
+.dark-mode header {
+    background-color: #1f1f1f;
+    color: #ffffff;
 }
 
+.dark-mode section {
+    background-color: #1f1f1f;
+}
 
-img {
-    margin-right: auto;
-    border-radius: 20%;
+.dark-mode p, .dark-mode a {
+    color: #ffffff;
+}
+
+.dark-mode h2 {
+    border-bottom: 2px solid #ffffff;
+}
+
+/* Flexbox alignment */
+header h1 {
+    flex: 1;
+    text-align: left;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    section {
+        padding: 1.5em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    input[type="checkbox"] {
+        transform: scale(1.2);
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        padding: 1em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    p {
+        font-size: medium;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    iframe {
+        width: 100%;
+    }
+
+    header {
+        flex-direction: column;
+    }
 }
