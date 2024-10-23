@@ -1,4 +1,3 @@
-// script.js
 const checkbox = document.getElementById("darkModeCheckbox");
 const body = document.body;
 
