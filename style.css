@@ -1,36 +1,26 @@
-/* General styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url(mountain.jpg);
+    background-image: url(mountain2.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    background-color: black;
-    color: black;
+    background-color: white; 
+    color: #333333; 
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 header {
     background-color: #747474;
-    color: #000000;
+    color: #ffffff; 
     padding: 1em 0;
     text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-}
-
-.toggle-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-input[type="checkbox"] {
-    margin-left: 10px;
-    transform: scale(1.5);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 section {
@@ -41,12 +31,13 @@ section {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 1em;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 p {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: larger;
-    color: #000000;
+    transition: color 0.3s ease;
 }
 
 h2 {
@@ -54,19 +45,22 @@ h2 {
     padding-bottom: 0.5em;
     font-size: 1.8em;
     color: white;
+    transition: border-color 0.3s ease, color 0.3s ease;
 }
 
 a {
-    color: #000000;
+    color: #ffffff; 
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 img {
     border-radius: 20%;
 }
 
-/* Dark Mode Styles */
+
 .dark-mode {
+    background-image: url(darkmountain.jpg);
     background-color: #121212;
     color: #ffffff;
 }
@@ -88,13 +82,13 @@ img {
     border-bottom: 2px solid #ffffff;
 }
 
-/* Flexbox alignment */
+
 header h1 {
-    flex: 1;
-    text-align: left;
+    flex: 2;
+    text-align: center;
 }
 
-/* Media Queries for Responsiveness */
+
 @media (max-width: 768px) {
     section {
         padding: 1.5em;
