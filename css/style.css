@@ -419,6 +419,56 @@ header .navbar ul li a:hover {
   color: var(--yellow);
 }
 
+/* Light mode styles (default) */
+body {
+  background: #000000;
+  color: #ffffff;
+  transition: background 0.3s, color 0.3s;
+}
+
+header {
+  background: #1a1a1a;
+}
+
+.navbar ul li a {
+  background: #333;
+  color: #fff;
+}
+
+.navbar ul li a:hover {
+  background: var(--red);
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background: #f4f4f4;
+  color: #333;
+}
+
+body.dark-mode header {
+  background: #ddd;
+}
+
+body.dark-mode .navbar ul li a {
+  background: #ccc;
+  color: #333;
+}
+
+body.dark-mode .navbar ul li a:hover {
+  background: var(--yellow);
+}
+
+body.dark-mode .btn {
+  background: var(--red);
+  color: #fff;
+}
+
+body.dark-mode .btn:hover {
+  background: #333;
+  color: #fff;
+}
+
+
 
 /* Media Queries */
 @media (max-width: 1200px) {
