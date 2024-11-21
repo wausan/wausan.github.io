@@ -236,12 +236,12 @@ header .navbar ul li a:hover {
 }
 
 .html-activities .activity-box p {
-  margin: 0;
+  margin: 10;
   font-weight: bold;
 }
 
 .html-activities .heading {
-  margin-bottom: 3rem;
+  margin-bottom: 25rem;
   font-size: 4rem;
   color: #fff;
 }
@@ -335,12 +335,7 @@ header .navbar ul li a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 3rem;
-}
-
-.playlist iframe {
-  border-radius: 1rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  margin-top: 15rem;
 }
 
 .contact {
