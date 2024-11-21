@@ -1,69 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Portfolio</title>
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+ <link rel="stylesheet" href="css/style.css">
+
 </head>
-
 <body>
-    <header>
-        <h1>My Portfolio</h1>
-        <div class="toggle-container">
-            <label for="darkModeCheckbox">Dark Mode</label>
-            <input type="checkbox" id="darkModeCheckbox">
-        </div>
-    </header>
-    <br>
-    <center><img src="bossmaw.jpg" width="300px" height="300px" alt="My Profile Picture"></center>
 
-    <section id="name">
-        <h2>About Me</h2>
-        <p>I am Wam Ausan, a 2nd-year student at the University of Immaculate Conception, pursuing a Bachelor of Science
-            in Information Technology.</p>
-    </section>
+ <header>
+ <div class="user">
+  <img src="images/profile.jpg" alt="">
+  <h3 class="name">Wam Ausan</h3>
+  <p class="post">front end developer</p>
+ </div>
 
-    <section id="school-projects">
-        <h2>School Projects</h2>
-        <p>POS Systems and Computer Programming</p>
-    </section>
+ <nav class="navbar">
+  <ul>
+   <li><a href="#home">home</a></li>
+   <li><a href="#about">about</a></li>
+   <li><a href="#skills">skills</a></li>
+   <li><a href="#playlist">playlist</a></li>
+   <li><a href="#HTML Activities">HTML Activities</a></li>
+   <li><a href="#API demo">API demo</a></li>
+   <li><a href="#contact me">contact me</a></li>
+  </ul>
+ </nav>
 
-    <section id="talents">
-        <h2>Talents</h2>
-        <p>I am a table tennis player</p>
-    </section>
+ </header>
 
-    <section id="social-media">
-        <h2>Social Media</h2>
-        <a href="https://www.facebook.com/BossMaww?mibextid=LQQJ4d" class="link">Facebook</a><br>
-            <a href="https://www.instagram.com/wam.ausan/" class="link">Instagram</a>
-        
-    </section>
 
-    <section id="links">
-        <h2>Links</h2>
-        <a href="fashionblog/index.html">Go to Fashion Blog</a><br>
-            <a href="recipe/index.html">Go to Recipe</a><br>
-            <a href="WoodruffPortfolio/index.html">Go to Woodruff Portfolio</a>
-        
-    </section>
+<div id="menu" class="fas fa-bars"></div>
 
-    <section id="favorites">
-        <h2>Favorites</h2>
-        <img src="hirono.jpg" width="250px" height="250px" alt="Favorite Anime Character">
-    </section>
+<section class="home" id="home">
 
-    <section id="musics">
-        <h2>Musics</h2>
-        <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="450"
-            style="width:100%;max-width:800px;overflow:hidden;background:transparent;"
-            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-            src="https://embed.music.apple.com/ph/playlist/pl.u-9N9L2ybt1bqdo0j"></iframe>
-    </section>
+<h3>HI THERE !</h3>
+<h1>I'M <span>Wam Ausan</span></h1>
+<p> 2nd-year student at the University of Immaculate Conception, pursuing a Bachelor of Science
+ in Information Technology.
+</p>
+ <a href="#about"><button class="btn">about me <i class="fas fa-user"></i></button></a>
 
-    <script src="script.js"></script>
+</section>
+
+<section class="about" id="about">
+
+<h1 class="heading"> <span>about</span> me </h1>
+<div class="row">
+<div class="info">
+
+ <h3><span> name : Wam Bontuan Ausan</span></h3>
+ <h3><span> age: 21</span></h3>
+ <h3><span> language: filipino</span></h3>
+</div>
+
+<div class="counter">
+ 
+ <div class="box">
+  <span>hobbies and interests</span>
+<h3>- listening to music</h3><br>
+<h3>- diecast collector</h3><br>
+<h3>- popmart collector</h3><br>
+</div>
+</div>
+
+</section>
+
+<section class="skills" id="skills">
+ <h1 class="heading"> <span>skills</span> </h1>
+ <div class="icon-container">
+  <div class="icon-box">
+   <img src="icons/starcraft2.png" alt="Starcraft 2">
+  </div>
+  <div class="icon-box">
+   <img src="icons/assetto.png" alt="Assetto Corsa">
+  </div>
+  <div class="icon-box">
+   <img src="icons/warframe.png" alt="Warframe">
+  </div>
+  <div class="icon-box">
+   <img src="icons/codm.png" alt="codm">
+  </div>
+ </div>
+</section>
+
+<section class="playlist" id="playlist">
+ <h1 class="heading"><span>Playlist</span></h1>
+ <div class="playlist-container">
+   <iframe 
+     allow="autoplay *; encrypted-media *;" 
+     frameborder="0" 
+     height="500" 
+     style="width: 100%; max-width: 600px; background: transparent;"
+     sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+     src="https://embed.music.apple.com/ph/playlist/pl.u-76oNkyMtvr0MZ7k">
+   </iframe>
+ </div>
+</section>
+
+
+<section class="html-activities" id="HTML Activities">
+  <h1 class="heading"> <span>HTML Activities</span> </h1>
+  <div class="activities-container">
+    <a href="fashionblog/index.html" class="activity-box">
+      <p>Fashion Blog</p>
+    </a>
+    <a href="recipe/index.html" class="activity-box">
+      <p>Recipe</p>
+    </a>
+    <a href="WoodruffPortfolio/index.html" class="activity-box">
+      <p>Woodruff Portfolio</p>
+    </a>
+  </div>
+</section>
+
+<section class="contact me" id="contact me">
+
+ <h1 class="heading"><span>Contact Me</span></h1>
+ <div class="contact-container">
+   <div class="contact-form">
+     <h3>Get in Touch</h3>
+     <form action="https://formsubmit.co/YOUR_EMAIL" method="POST">
+       <input type="text" name="name" placeholder="Your Name" required>
+       <input type="email" name="email" placeholder="Your Email" required>
+       <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+       <button type="submit" class="btn">Send <i class="fas fa-paper-plane"></i></button>
+     </form>
+   </div>
+   <div class="contact-links">
+     <h3>Reach Me At</h3>
+     <ul>
+       <li><i class="fas fa-envelope"></i> <a href="wausan_230000001410@uic.edu.ph">wausan</a></li>
+       <li><i class="fab fa-github"></i> <a href="https://github.com/wausan" target="_blank">GitHub</a></li>
+     </ul>
+   </div>
+ </div>
+</section>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+ <script src="js/script.js"></script>
+
 </body>
-
 </html>
