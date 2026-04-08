@@ -1,147 +1,517 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Portfolio</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Wam Ausan — Executive Virtual Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #222;
+    background: #fff;
+    line-height: 1.7;
+  }
 
- <link rel="stylesheet" href="css/style.css">
+  a { color: inherit; text-decoration: none; }
 
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: #fff;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+  }
+  .nav-logo { font-weight: 600; font-size: 1rem; color: #111; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.85rem; color: #555; transition: color 0.2s; }
+  .nav-links a:hover { color: #111; }
+  .nav-resume {
+    font-size: 0.82rem;
+    padding: 0.45rem 1.1rem;
+    border: 1px solid #222;
+    color: #222;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-resume:hover { background: #222; color: #fff; }
+
+  /* HERO */
+  #hero {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 5rem 2rem 4rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .hero-photo {
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #999;
+    overflow: hidden;
+  }
+  .hero-text h1 { font-size: 2rem; font-weight: 600; color: #111; margin-bottom: 0.3rem; }
+  .hero-text .title { font-size: 1rem; color: #555; margin-bottom: 1rem; }
+  .hero-text p { font-size: 0.9rem; color: #666; max-width: 500px; margin-bottom: 1.5rem; }
+  .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .btn {
+    font-size: 0.82rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    display: inline-block;
+    border: 1px solid #222;
+  }
+  .btn-dark { background: #222; color: #fff; }
+  .btn-dark:hover { background: #000; }
+  .btn-light { background: #fff; color: #222; }
+  .btn-light:hover { background: #f5f5f5; }
+
+  /* SECTIONS */
+  .container { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
+  .section-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 1.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #111;
+  }
+
+  /* ABOUT */
+  #about { background: #fafafa; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .about-block { margin-bottom: 1.75rem; }
+  .about-block h3 {
+    font-size: 0.8rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: #111; margin-bottom: 0.5rem;
+  }
+  .about-block p { font-size: 0.88rem; color: #555; }
+
+  .stats-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1rem; margin-top: 2.5rem; padding-top: 2.5rem;
+    border-top: 1px solid #e5e5e5;
+  }
+  .stat { text-align: center; }
+  .stat-num { font-size: 1.6rem; font-weight: 600; color: #111; }
+  .stat-lbl { font-size: 0.75rem; color: #888; margin-top: 0.2rem; }
+
+  .achievement {
+    display: flex; gap: 0.85rem;
+    padding: 0.85rem 0; border-bottom: 1px solid #eee;
+    align-items: flex-start;
+  }
+  .achievement:last-child { border-bottom: none; }
+  .ach-dot {
+    width: 7px; height: 7px; background: #111;
+    border-radius: 50%; margin-top: 8px; flex-shrink: 0;
+  }
+  .achievement h4 { font-size: 0.88rem; font-weight: 500; color: #111; margin-bottom: 0.15rem; }
+  .achievement p { font-size: 0.82rem; color: #777; }
+
+  /* SKILLS */
+  #skills { background: #fff; }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2.5rem; }
+  .skill-box { border: 1px solid #e5e5e5; border-radius: 6px; padding: 1.5rem; }
+  .skill-box h3 {
+    font-size: 0.85rem; font-weight: 600; color: #111;
+    margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid #eee;
+  }
+  .skill-list { list-style: none; }
+  .skill-list li {
+    font-size: 0.83rem; color: #555; padding: 0.28rem 0;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .skill-list li::before { content: '–'; color: #aaa; flex-shrink: 0; }
+
+  .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .service-box { border: 1px solid #e5e5e5; border-radius: 6px; padding: 1.25rem; background: #fafafa; }
+  .service-box h4 { font-size: 0.85rem; font-weight: 600; color: #111; margin-bottom: 0.4rem; }
+  .service-box p { font-size: 0.8rem; color: #777; }
+
+  /* EXPERIENCE */
+  #experience { background: #fafafa; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5; }
+  .exp-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; }
+  .exp-sub {
+    font-size: 0.8rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: #888; margin-bottom: 1.25rem;
+  }
+  .job { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid #eee; }
+  .job:last-child { border-bottom: none; padding-bottom: 0; }
+  .job-date { font-size: 0.78rem; color: #888; margin-bottom: 0.2rem; }
+  .job-role { font-size: 0.95rem; font-weight: 600; color: #111; margin-bottom: 0.1rem; }
+  .job-company { font-size: 0.83rem; color: #777; margin-bottom: 0.6rem; }
+  .job-desc { font-size: 0.85rem; color: #555; }
+
+  .project-card {
+    border: 1px solid #e5e5e5; border-radius: 6px;
+    padding: 1.25rem; margin-bottom: 1rem; background: #fff;
+  }
+  .project-tag {
+    font-size: 0.7rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: #888; margin-bottom: 0.4rem;
+  }
+  .project-card h4 { font-size: 0.9rem; font-weight: 600; color: #111; margin-bottom: 0.35rem; }
+  .project-card p { font-size: 0.82rem; color: #666; }
+
+  /* CONTACT */
+  #contact { background: #fff; }
+  .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
+  .contact-info p { font-size: 0.88rem; color: #555; margin-bottom: 1.5rem; }
+  .contact-item {
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 0.85rem 1rem; border: 1px solid #e5e5e5;
+    border-radius: 6px; margin-bottom: 0.75rem;
+    font-size: 0.85rem; color: #333; transition: border-color 0.2s;
+  }
+  .contact-item:hover { border-color: #aaa; }
+  .contact-item-icon {
+    width: 28px; height: 28px; background: #f0f0f0;
+    border-radius: 4px; display: flex; align-items: center;
+    justify-content: center; font-size: 0.75rem;
+    font-weight: 600; color: #333; flex-shrink: 0;
+  }
+
+  .form-field { margin-bottom: 1rem; }
+  .form-field label { display: block; font-size: 0.78rem; font-weight: 500; color: #444; margin-bottom: 0.35rem; }
+  .form-field input,
+  .form-field textarea {
+    width: 100%; font-family: 'Inter', sans-serif;
+    font-size: 0.88rem; padding: 0.65rem 0.85rem;
+    border: 1px solid #ddd; border-radius: 4px;
+    color: #222; background: #fff; outline: none;
+    transition: border-color 0.2s; resize: none;
+  }
+  .form-field input:focus,
+  .form-field textarea:focus { border-color: #555; }
+  .form-field textarea { min-height: 110px; }
+
+  /* FOOTER */
+  footer {
+    background: #111; color: #aaa;
+    padding: 2rem; text-align: center; font-size: 0.82rem;
+  }
+  footer span { color: #eee; font-weight: 500; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    #hero { flex-direction: column; text-align: center; padding: 3rem 1.5rem; }
+    .hero-btns { justify-content: center; }
+    .about-grid, .exp-layout, .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .container { padding: 3rem 1.5rem; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 480px) {
+    .skills-grid, .services-grid { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
 
- <header>
-  <div class="user">
-    <img src="images/profile.jpg" alt="">
-    <h3 class="name">Wam Ausan</h3>
-    <p class="post">front end developer</p>
-  </div>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Wam Ausan</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="resume.pdf" target="_blank" class="btn nav-resume">Resume ↓</a>
+</nav>
 
-  <nav class="navbar">
-    <ul>
-      <li><a href="#home">home</a></li>
-      <li><a href="#about">about</a></li>
-      <li><a href="#skills">skills</a></li>
-      <li><a href="#favorite playlist">favorite playlist</a></li>
-      <li><a href="#HTML Activities">HTML Activities</a></li>
-      <li><a href="#contact me">contact me</a></li>
-    </ul>
-  </nav>
-
-  <button id="dark-mode-toggle" class="btn">Dark Mode</button>
-</header>
-
-
-
-<div id="menu" class="fas fa-bars"></div>
-
-<section class="home" id="home">
-
-<h3>HI THERE !</h3>
-<h1>I'M <span>Wam Ausan</span></h1>
-<p> 2nd-year student at the University of Immaculate Conception, pursuing a Bachelor of Science
- in Information Technology.
-</p>
- <a href="#about"><button class="btn">about me <i class="fas fa-user"></i></button></a>
-
-</section>
-
-<section class="about" id="about">
-
-<h1 class="heading"> <span>about</span> me </h1>
-<div class="row">
-<div class="info">
-
- <h3><span> name : Wam Bontuan Ausan</span></h3>
- <h3><span> age: 21</span></h3>
- <h3><span> language: filipino</span></h3>
-</div>
-
-<div class="counter">
- 
- <div class="box">
-  <span>hobbies and interests</span>
-<h3>- listening to music</h3><br>
-<h3>- diecast collector</h3><br>
-<h3>- popmart collector</h3><br>
-</div>
-</div>
-
-</section>
-
-<section class="skills" id="skills">
- <h1 class="heading"> <span>skills</span> </h1>
- <div class="icon-container">
-  <div class="icon-box">
-   <img src="icons/starcraft2.png" alt="Starcraft 2">
-  </div>
-  <div class="icon-box">
-   <img src="icons/assetto" alt="Assetto Corsa">
-  </div>
-  <div class="icon-box">
-   <img src="icons/warframe.png" alt="Warframe">
-  </div>
-  <div class="icon-box">
-   <img src="icons/codm.png" alt="codm">
-  </div>
- </div>
-</section>
-
-<section class="playlist" id="playlist">
- <h1 class="heading"><span>Playlist</span></h1>
- <div class="playlist-container">
-   <iframe 
-     allow="autoplay *; encrypted-media *;" 
-     frameborder="0" 
-     height="500" 
-     style="width: 100%; max-width: 600px; background: transparent;"
-     sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-     src="https://embed.music.apple.com/ph/playlist/pl.u-76oNkyMtvr0MZ7k">
- </div>
-</section>
-
-
-<section class="html-activities" id="HTML Activities">
-  <h1 class="heading"> <span>HTML Activities</span> </h1>
-  <div class="activities-container">
-    <a href="fashionblog/index.html" class="activity-box">
-      <p>Fashion Blog</p>
-    </a>
-    <a href="recipe/index.html" class="activity-box">
-      <p>Recipe</p>
-    </a>
-    <a href="WoodruffPortfolio/index.html" class="activity-box">
-      <p>Woodruff Portfolio</p>
-    </a>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-photo">WA</div>
+  <div class="hero-text">
+    <h1>Wam Ausan</h1>
+    <p class="title">Executive Virtual Assistant</p>
+    <p>Reliable, detail-oriented virtual assistant helping executives and entrepreneurs stay organized, save time, and grow their business — remotely and efficiently.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-dark">Get in Touch</a>
+      <a href="resume.pdf" target="_blank" class="btn btn-light">Download Resume</a>
+    </div>
   </div>
 </section>
 
-<section class="contact me" id="contact me">
-
- <h1 class="heading"><span>Contact Me</span></h1>
- <div class="contact-container">
-   <div class="contact-form">
-     <form action="https://formsubmit.co/wamy0912@gmail.com" method="POST">
-       <input type="text" name="name" placeholder="Your Name" required>
-       <input type="email" name="email" placeholder="Your Email" required>
-       <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-       <button type="submit" class="btn">Send <i class="fas fa-paper-plane"></i></button>
-     </form>
-   </div>
-   <div class="contact-links">
-     <ul>
-       <li><i class="fab fa-github"></i> <a href="https://github.com/wausan" target="_blank">GitHub</a></li>
-     </ul>
-   </div>
- </div>
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-grid">
+      <div>
+        <div class="about-block">
+          <h3>Background</h3>
+          <p>I am an IT student focused on building practical systems that solve real-world problems, particularly in healthcare and data management.</p>
+        </div>
+        <div class="about-block">
+          <h3>Education</h3>
+          <p>
+            BS Business Administration — University of the Philippines<br>
+            Certified Virtual Assistant — VA Academy Philippines (2022)<br>
+            Google Project Management Certificate — Coursera (2023)<br>
+            HubSpot CRM Certification — HubSpot Academy (2023)
+          </p>
+        </div>
+        <div class="about-block">
+          <h3>Mission & Vision</h3>
+          <p>My mission is to provide high-quality, dependable support that allows my clients to focus on what they do best. I envision a future where virtual assistance is seen as a true strategic partnership, not just task execution.</p>
+        </div>
+      </div>
+      <div>
+        <div class="about-block">
+          <h3>Goals & Motivation</h3>
+          <p>Short-term, I am building expertise in AI productivity tools and automation to deliver even greater value. Long-term, I aim to grow a boutique VA agency. I am motivated by the real, measurable impact great support has on a person's business and well-being.</p>
+        </div>
+        <div class="about-block">
+          <h3>Key Achievements</h3>
+          <div>
+            <div class="achievement">
+              <div class="ach-dot"></div>
+              <div>
+                <h4>Top Performer — VA of the Year 2023</h4>
+                <p>Recognized for reducing client scheduling conflicts by 80% through improved calendar systems.</p>
+              </div>
+            </div>
+            <div class="achievement">
+              <div class="ach-dot"></div>
+              <div>
+                <h4>Grew 3 Social Accounts to 5,000+ Followers</h4>
+                <p>Built engaged audiences from zero for lifestyle and coaching brand clients within 6 months.</p>
+              </div>
+            </div>
+            <div class="achievement">
+              <div class="ach-dot"></div>
+              <div>
+                <h4>Recovered 15 Hours/Week for C-Suite Executive</h4>
+                <p>Streamlined inbox, calendar, and task systems using Notion and ClickUp.</p>
+              </div>
+            </div>
+            <div class="achievement">
+              <div class="ach-dot"></div>
+              <div>
+                <h4>Graduated Summa Cum Laude</h4>
+                <p>Top of Business Administration class, major in Operations Management.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stats-row">
+      <div class="stat"><div class="stat-num">3+</div><div class="stat-lbl">Years Experience</div></div>
+      <div class="stat"><div class="stat-num">20+</div><div class="stat-lbl">Clients Served</div></div>
+      <div class="stat"><div class="stat-num">98%</div><div class="stat-lbl">Satisfaction Rate</div></div>
+      <div class="stat"><div class="stat-num">500+</div><div class="stat-lbl">Projects Done</div></div>
+    </div>
+  </div>
 </section>
 
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <h2 class="section-title">Core Skills & Services</h2>
+    <div class="skills-grid">
+      <div class="skill-box">
+        <h3>Technical Skills</h3>
+        <ul class="skill-list">
+          <li>Google Workspace (Docs, Sheets, Slides)</li>
+          <li>Microsoft Office Suite</li>
+          <li>Project Management (Asana, ClickUp, Notion)</li>
+          <li>CRM Systems (HubSpot, Salesforce)</li>
+          <li>Email Marketing (Mailchimp, ConvertKit)</li>
+          <li>Canva & Adobe Express</li>
+          <li>Basic WordPress Management</li>
+          <li></li>
+        </ul>
+      </div>
+      <div class="skill-box">
+        <h3>Soft Skills</h3>
+        <ul class="skill-list">
+          <li>Clear written & verbal communication</li>
+          <li>Attention to detail</li>
+          <li>Time management & prioritization</li>
+          <li>Proactive problem-solving</li>
+          <li>Discretion & confidentiality</li>
+          <li>Adaptability</li>
+          <li>Reliability & accountability</li>
+          <li>Emotional intelligence</li>
+        </ul>
+      </div>
+      <div class="skill-box">
+        <h3>Tools & Software</h3>
+        <ul class="skill-list">
+          <li>Notion (advanced databases)</li>
+          <li>Slack, Microsoft Teams</li>
+          <li>Zoom, Google Meet</li>
+          <li>Calendly & Doodle</li>
+          <li>Loom (async documentation)</li>
+          <li>ChatGPT & AI writing tools</li>
+          <li>QuickBooks (basic support)</li>
+          <li>LastPass / 1Password</li>
+        </ul>
+      </div>
+    </div>
+    <div class="services-grid">
+      <div class="service-box">
+        <h4>Executive Support</h4>
+        <p>Calendar & inbox management, travel booking, meeting prep, and executive communications.</p>
+      </div>
+      <div class="service-box">
+        <h4>Project Coordination</h4>
+        <p>Project tracking, team coordination, deadline management, and progress reporting.</p>
+      </div>
+      <div class="service-box">
+        <h4>Social Media Management</h4>
+        <p>Content strategy, scheduling, caption writing, graphic design, and analytics.</p>
+      </div>
+      <div class="service-box">
+        <h4>Research & Data Entry</h4>
+        <p>Market research, competitor analysis, data entry, spreadsheets, and reporting.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <h2 class="section-title">Experience & Projects</h2>
+    <div class="exp-layout">
+      <div>
+        <p class="exp-sub">Work Experience</p>
+        <div class="job">
+          <div class="job-date">2022 – Present</div>
+          <div class="job-role">Executive Virtual Assistant</div>
+          <div class="job-company">Freelance / Remote</div>
+          <div class="job-desc">Providing executive-level support to 3–5 clients simultaneously. Manages calendars, inboxes, travel, client communications, social media, and Notion/ClickUp systems. Consistently recovers 12–18 hours per week for each client.</div>
+        </div>
+        <div class="job">
+          <div class="job-date">2021 – 2022</div>
+          <div class="job-role">Administrative Assistant</div>
+          <div class="job-company">Accenture Philippines · Taguig City</div>
+          <div class="job-desc">Supported a team of 15 consultants with scheduling, documentation, and client correspondence. Digitized the department's filing system, reducing retrieval time by 60%. Coordinated 20+ events per quarter.</div>
+        </div>
+        <div class="job">
+          <div class="job-date">2020 – 2021</div>
+          <div class="job-role">Customer Success Associate</div>
+          <div class="job-company">Shopee Philippines · Pasig City</div>
+          <div class="job-desc">Managed high-volume customer inquiries with a 97% satisfaction score. Trained 8 new associates and developed an FAQ database that reduced escalations by 35%.</div>
+        </div>
+      </div>
+      <div>
+        <p class="exp-sub">Portfolio Projects</p>
+        <div class="project-card">
+          <div class="project-tag">Project Management</div>
+          <h4>ClickUp Workspace Build</h4>
+          <p>Designed a full ClickUp workspace for a 10-person e-commerce team with dashboards, automations, and weekly reporting templates. Reduced missed deadlines by 70%.</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tag">Social Media</div>
+          <h4>30-Day Content Calendar</h4>
+          <p>Created a complete Instagram & LinkedIn content calendar for a lifestyle brand — captions, hashtags, design briefs, and scheduling. Resulted in 40% engagement increase.</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tag">Research</div>
+          <h4>Competitor Analysis Report</h4>
+          <p>Delivered an 18-page analysis for a SaaS startup covering 10 competitors, pricing, feature gaps, and market opportunities. Used in their Series A pitch deck.</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tag">Travel & Logistics</div>
+          <h4>Executive Travel Itinerary</h4>
+          <p>Coordinated a 14-day, 5-country business trip including flights, hotels, visas, meeting schedules, and contingency plans — delivered as a clean Notion document.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
- <script src="js/script.js"></script>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-layout">
+      <div class="contact-info">
+        <p>I am currently open to new clients for both project-based and retainer arrangements. Feel free to reach out — I typically respond within 24 hours.</p>
+        <a href="mailto:wam.ausan@email.com" class="contact-item">
+          <div class="contact-item-icon">@</div>
+          wam.ausan@email.com
+        </a>
+        <a href="https://linkedin.com/in/wamausan" target="_blank" class="contact-item">
+          <div class="contact-item-icon">in</div>
+          linkedin.com/in/wamausan
+        </a>
+        <a href="resume.pdf" target="_blank" class="contact-item">
+          <div class="contact-item-icon">↓</div>
+          Download Resume (PDF)
+        </a>
+      </div>
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-field">
+          <label>Name</label>
+          <input type="text" placeholder="Your name" required/>
+        </div>
+        <div class="form-field">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com" required/>
+        </div>
+        <div class="form-field">
+          <label>Message</label>
+          <textarea placeholder="How can I help you?" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-dark" id="submitBtn">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
 
+<!-- FOOTER -->
+<footer>
+  <span>Wam Ausan</span> · Executive Virtual Assistant · Philippines · © 2025
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = 'Sent!';
+  btn.style.background = '#2d6a4f';
+  btn.style.borderColor = '#2d6a4f';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'Send Message';
+    btn.style.background = '';
+    btn.style.borderColor = '';
+    btn.disabled = false;
+    e.target.reset();
+  }, 3000);
+}
+</script>
 </body>
 </html>
